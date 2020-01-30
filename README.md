@@ -62,3 +62,92 @@ The Switch() method will switch virtual environments, and can also be used to lo
 10.0
 ```
 Using will import a package and return it, i.e. set it equal to something. Afterwards, you can and might as well access the package like you normally would.
+# Full Example Session (Including Loading):
+```python
+>>> from TopLoader import Environment
+TopLoader V 0.0.1
+Happy Loading!
+-----------------
+>>> env = Environment("env")
+Loading Package Manager
+Pkg loaded
+Activating new environment at `~/Projects/example_project/env/Project.toml`
+Activated Package Environment: env
+Environment available at: /env
+>>> env.Add("Lathe")
+  Updating registry at `~/.julia/registries/General`
+  Updating git-repo `https://github.com/JuliaRegistries/General.git`
+ Resolving package versions...
+  Updating `~/Projects/example_project/env/Project.toml`
+  [38d8eb38] + Lathe v0.0.3
+  Updating `~/Projects/example_project/env/Manifest.toml`
+  [324d7699] + CategoricalArrays v0.7.7
+  [34da2185] + Compat v3.2.0
+  [9a962f9c] + DataAPI v1.1.0
+  [a93c6f00] + DataFrames v0.20.0
+  [864edb3b] + DataStructures v0.17.9
+  [e2d170a0] + DataValueInterfaces v1.0.0
+  [41ab1584] + InvertedIndices v1.0.0
+  [82899510] + IteratorInterfaceExtensions v1.0.0
+  [682c06a0] + JSON v0.21.0
+  [38d8eb38] + Lathe v0.0.3
+  [e1d29d7a] + Missings v0.4.3
+  [bac558e1] + OrderedCollections v1.1.0
+  [69de0a69] + Parsers v0.3.10
+  [2dfb63ee] + PooledArrays v0.5.3
+  [189a3867] + Reexport v0.2.0
+  [a2af1166] + SortingAlgorithms v0.3.1
+  [3783bdb8] + TableTraits v1.0.0
+  [bd369af6] + Tables v0.2.11
+  [2a0f44e3] + Base64 
+  [ade2ca70] + Dates 
+  [8bb1440f] + DelimitedFiles 
+  [8ba89e20] + Distributed 
+  [9fa8497b] + Future 
+  [b77e0a4c] + InteractiveUtils 
+  [76f85450] + LibGit2 
+  [8f399da3] + Libdl 
+  [37e2e46d] + LinearAlgebra 
+  [56ddb016] + Logging 
+  [d6f4376e] + Markdown 
+  [a63ad114] + Mmap 
+  [44cfe95a] + Pkg 
+  [de0858da] + Printf 
+  [3fa0cd96] + REPL 
+  [9a3f8284] + Random 
+  [ea8e919c] + SHA 
+  [9e88b42a] + Serialization 
+  [1a1011a3] + SharedArrays 
+  [6462fe0b] + Sockets 
+  [2f01184e] + SparseArrays 
+  [10745b16] + Statistics 
+  [8dfed614] + Test 
+  [cf7118a7] + UUIDs 
+  [4ec0a83e] + Unicode 
+>>> env.List()
+{'Lathe': <PyCall.jlwrap 0.0.3>}
+>>> env.Using("Lathe")
+<module 'julia.Lathe' (<julia.core.JuliaModuleLoader object at 0x7fb6424a50d0>)>
+>>> array = [5,10,15,20,25,30,35,40]
+>>> lathe = env.Using("Lathe")
+>>> mu = lathe.stats.mean(array)
+>>> print(mu)
+22.5
+>>> env.Switch("SecondEnv")
+Activating new environment at `~/Projects/example_project/SecondEnv/Project.toml`
+Environment created at /SecondEnv
+>>> env.List()
+{}
+>>> from TopLoader import Load
+>>> environment = Load("env")
+Loading file at: env
+Loading Package Manager
+Pkg loaded
+Activating environment at `~/Projects/example_project/env/Project.toml`
+Activated Package Environment: env
+Environment available at: /env
+Environment loaded!
+{'Lathe': <PyCall.jlwrap 0.0.3>}
+>>> environment.List()
+{'Lathe': <PyCall.jlwrap 0.0.3>}
+```
