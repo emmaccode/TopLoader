@@ -1,4 +1,6 @@
-print("Initialized")
+print("TopLoader V 0.0.1")
+print("Happy Loading!")
+print("-----------------")
 import julia
 from julia import Pkg
 class Environment:
