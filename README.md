@@ -54,7 +54,7 @@ Activating new environment at `~/Projects/TopLoader/Julio/Project.toml`
 Environment created at /Julio
 
 ```
-The Switch() method will create switch virtual environments, and can also be used to load a new environment. That being said, for newly constructed types, you can either change the parameter to an existing environment, or simply use the provided load() function to construct an Environment type which will hold said Pkg environment.
+The Switch() method will switch virtual environments, and can also be used to load a new environment. That being said, for newly constructed types, you can either change the parameter to an existing environment, or simply use the provided load() function to construct an Environment type which will hold said Pkg environment.
 #### Using(Package_Name)
 ```python
 >>> lathe = env.Using("Lathe")
