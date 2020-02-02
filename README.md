@@ -28,6 +28,12 @@ Activating new environment at `~/Projects/TopLoader/Environment_Name/Project.tom
 Activated Package Environment: Environment_Name
 Environment available at: /Environment_Name
 ```
+**To use you're Julia installation's packages, set the environment name to "Global", here's an example:**
+```python
+from TopLoader import Environment
+env = Environment("Global")
+```
+-------------------------------------------------
 Constructing our Environment takes a name parameter, shown above. 
 You can use any string, of course. 
 The environment won't instantiate until you add a package. 
